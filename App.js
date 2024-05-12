@@ -1,88 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../src/screens/HomeScreen';
 
-import React from 'react';
-import StackNavigator from './navigation/StackNavigator';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-
-function Section({children, title}){
-  const isDarkMode = useColorScheme() === 'dark';
+const StackNavigator = () => {
+    const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen options={{headerShown:false}} name='Home' component={HomeScreen}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const styles = StyleSheet.create({})
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <>
-      <StackNavigator />
-    </>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+export default StackNavigator
