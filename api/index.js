@@ -15,7 +15,7 @@ app.use(urlencoded({extended: false}));
 app.use(json());
 
 connect(
-    'mongodb+srv://reecedepadua:12345@cluster0.wwjahrf.mongodb.net/sample?retryWrites=true&w=majority&appName=Cluster0',
+    '',
   )
   .then(() => {
     console.log('Connected to MongoDB');
